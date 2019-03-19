@@ -19,8 +19,8 @@ import java.util.List;
  * @Modified by:
  */
 @RunWith(SpringRunner.class)
-@SpringBootTest(classes = PraticeollectionUtils.class)
-public class PraticeollectionUtils {
+@SpringBootTest(classes = PraticeCollectionUtils.class)
+public class PraticeCollectionUtils {
 
     @Test
     public void testUnion(){
@@ -138,6 +138,7 @@ public class PraticeollectionUtils {
         s.add("have a error");
         System.out.println(s);
     }
+
 
 
 
