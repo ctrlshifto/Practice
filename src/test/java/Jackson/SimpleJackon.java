@@ -8,7 +8,7 @@ import java.io.IOException;
 
 /**
  * @Author:WhomHim
- * @Description:
+ * @Description:简单映射
  * @Date: Create in 2019/3/19 18:25
  * @Modified by:
  */

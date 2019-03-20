@@ -10,7 +10,7 @@ import java.util.Map;
 
 /**
  * @Author:WhomHim
- * @Description:
+ * @Description:集合的映射
  * @Date: Create in 2019/3/19 20:07
  * @Modified by:
  */
@@ -33,8 +33,7 @@ public class CollectionJackson {
         JsonNode root = mapper.readTree(text);
         String name = root.get("name").asText();
         int age = root.get("age").asInt();
-
+        System.out.println("以下是从json里取得名字及年龄：");
         System.out.println("name:" + name + " age:" + age);
-
     }
 }
