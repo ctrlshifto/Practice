@@ -176,7 +176,6 @@ public class TestRedisManyCommands {
         //[1, 3, 6, 9]  //输入排序后结果
         System.out.println(jedis.sort("a"));
         System.out.println(jedis.lrange("a",0,-1));
-
     }
 
 
