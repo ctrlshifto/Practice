@@ -3,6 +3,7 @@ package com.optional;
 import model.User;
 
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 /**
  * @Author:WhomHim
@@ -37,6 +38,9 @@ public class SimpleOptional {
         if (user != null) {
             user = new User();
         }
+
+
+
 
     }
 }

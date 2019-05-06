@@ -1,6 +1,7 @@
 package com.Lambda;
 
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -39,8 +40,22 @@ public class StreamTest {
         /**
          * 清单 6. 流转换为其它数据结构
          */
-        String[] array = (String[]) stream.toArray(String[]::new);
-        List<String>list1 = (List<String>) stream.collect(Collectors.toList());
+        /* 1.Array */
+//        String[] array = (String[]) stream.toArray(String[]::new);
+//        /* 2.Collection */
+//        List<String>list1 = (List<String>) stream.collect(Collectors.toList());
+//        List<String>list2 = (List<String>) stream.collect(Collectors.toCollection(ArrayList::new));
+//        /* 3.String */
+//        String str = stream.collect(Collectors.joining()).toString();
+//        /* 一个 Stream 只可以使用一次，上面的代码为了简洁而重复使用了数次。 */
+
+        /**
+         *  清单 8. 平方数
+         */
+        List<Integer> nums = Arrays.asList(1, 2, 3, 4);
+        List<Integer> squareNums = nums.stream().map(n -> n * n).collect(Collectors.toList());
+        System.out.println(squareNums);
+
 
     }
 }
