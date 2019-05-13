@@ -26,12 +26,12 @@ public class QueueConsumer {
     /**
      * 消费者有可能是多个，为了区分不同的消费者，为其创建随机名称
      */
-    private static final String consumerName = "consumer-" + RandomUtil.randomString(5);
+    private static final String CONSUMER_NAME = "consumer-" + RandomUtil.randomString(5);
 
     public static void main(String[] args) throws JMSException {
         //0. 先判断端口是否启动了 Active MQ 服务器
         ActiveMqUtil.checkServer();
-        System.out.printf("%s 消费者启动了。 %n", consumerName);
+        System.out.printf("%s 消费者启动了。 %n", CONSUMER_NAME);
 
         //1.创建ConnectiongFactory,绑定地址
         ConnectionFactory factory = new ActiveMQConnectionFactory(URL);
@@ -49,7 +49,7 @@ public class QueueConsumer {
         consumer.setMessageListener(arg0 -> {
             TextMessage textMessage = (TextMessage) arg0;
             try {
-                System.out.println(consumerName + " 接收消息：" + textMessage.getText());
+                System.out.println(CONSUMER_NAME + " 接收消息：" + textMessage.getText());
             } catch (JMSException e) {
                 e.printStackTrace();
             }
