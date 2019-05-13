@@ -22,7 +22,7 @@ public class SimpleOptional {
         // 传递进去的对象可以为null，如果为null则返回一个没有装载对象的Optional容器
         Optional<User> op2 = Optional.ofNullable(user);
 
-        /** ifPresent用法 */
+        /* ifPresent用法 */
         // 如果存在user，则打印user的name
         op2.ifPresent((value) -> System.out.println(value.getName()));
 
@@ -31,7 +31,7 @@ public class SimpleOptional {
             System.out.println(user.getName());
         }
 
-        /** orElseGet和orElseThrow方法 */
+        /* orElseGet和orElseThrow方法 */
         op2.orElseGet(()-> new User());
 
         // 旧写法

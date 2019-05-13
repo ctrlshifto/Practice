@@ -1,4 +1,4 @@
-package com.ElasticSearch;
+package com.elasticsearch;
 
 import model.Product;
 import org.apache.http.HttpHost;

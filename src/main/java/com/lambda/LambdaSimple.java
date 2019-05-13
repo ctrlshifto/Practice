@@ -1,4 +1,4 @@
-package com.Lambda;
+package com.lambda;
 
 import org.junit.Test;
 
@@ -109,5 +109,14 @@ public class LambdaSimple {
                 });
         System.out.println("accResult: " + accResult);
         System.out.println("--------");
+    }
+
+    @Test
+    public void reduce2() throws Exception {
+        System.out.println("=====reduce:将流中元素反复结合起来，得到一个值==========");
+        Stream<Integer> stream = Stream.iterate(1, x -> x+1).limit(100);
+//        stream.forEach(System.out::println);
+        Integer sum = stream.reduce(0,(x,y)-> x+y);
+        System.out.println(sum);
     }
 }
