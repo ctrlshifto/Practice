@@ -13,7 +13,7 @@ import java.util.stream.Collectors;
 
 public class ExampleEmployee {
 
-    private static List<Employee> employeeList = new ArrayList();
+    private static List<Employee> employeeList = new ArrayList<>();
 
     static {
         employeeList.add(new Employee("Steve", 6000, "London"));
@@ -27,8 +27,8 @@ public class ExampleEmployee {
         employeeList.add(new Employee("Fred", 15000, "Tokyo"));
     }
 
-    public static Map<String, Integer> generateMapData() {
-        Map<String, Integer> items = new HashMap();
+    private static Map<String, Integer> generateMapData() {
+        Map<String, Integer> items =new Hashtable<>(7,1);
         items.put("A", 10);
         items.put("B", 20);
         items.put("C", 30);
@@ -43,17 +43,17 @@ public class ExampleEmployee {
         List<Employee> results = employeeList;
 
         //看看实体类添加进去没
-        //employeeList.forEach((employee)-> System.out.println(employee.getName() +"，"+employee.getSalary()+","+employee.getOffice()));
+        employeeList.forEach((employee)-> System.out.println(employee.getName() +"，"+employee.getSalary()+","+employee.getOffice()));
 
         System.out.println("\n//anyMatch");
         for (Employee employee : employeeList) {
-            if (employee.getOffice().equals("London")) {
+            if ("London".equals(employee.getOffice())) {
                 System.out.println("true");
             }
         }
 
         System.out.println("\n//anyMatch 如果有一个match就返回true");
-        boolean isMatch = employeeList.stream().anyMatch(employee -> employee.getOffice().equals("London"));
+        boolean isMatch = employeeList.stream().anyMatch(employee -> "London".equals(employee.getOffice()));
         System.out.println(isMatch);
 
         System.out.println("\n //如果所有实体类都match则返回true");
@@ -124,7 +124,7 @@ public class ExampleEmployee {
 
         System.out.println("\n 打印出名字是Steve的员工信息");
         results.forEach(c -> {
-            if (c.getName().equals("Steve")) {
+            if ("Steve".equals(c.getName())) {
                 System.out.println(c);
             }
         });
@@ -153,7 +153,7 @@ public class ExampleEmployee {
 
         System.out.println("\n 打印key=D的map");
         Map<String, Integer> mapResults = map_.entrySet().stream()
-                .filter(c -> c.getKey().equals("D"))
+                .filter(c -> "D".equals(c.getKey()))
                 .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
         mapResults.forEach((key, value) -> System.out.println(key + ">>>>" + value));
 
