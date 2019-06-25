@@ -79,7 +79,7 @@ public class ExampleEmployee {
 
 
         System.out.println("\n //统计办公室是New York的个数");
-        long officeCount = employeeList.stream().filter(employee -> employee.getOffice().equals("New York")).count();
+        long officeCount = employeeList.stream().filter(employee -> "New York".equals(employee.getOffice())).count();
         System.out.println(officeCount);
 
         System.out.println("\n //List转换为Set");
@@ -88,7 +88,7 @@ public class ExampleEmployee {
 
         System.out.println("\n  //查找办公室地点是New York的员工");
         Optional<Employee> allMatchedEmployees = employeeList.stream()
-                .filter(employee -> employee.getOffice().equals("New York"))
+                .filter(employee -> "New York".equals(employee.getOffice()))
                 .findAny();
         System.out.println(allMatchedEmployees);
 
@@ -117,7 +117,7 @@ public class ExampleEmployee {
 
         System.out.println("\n New York办公室平均工资:");
         OptionalDouble averageSalaryByOffice = employeeList.stream()
-                .filter(employee -> employee.getOffice().equals("New York"))
+                .filter(employee -> "New York".equals(employee.getOffice()))
                 .mapToInt(Employee::getSalary)
                 .average();
         System.out.println("New York办公室平均工资:" + averageSalaryByOffice);
