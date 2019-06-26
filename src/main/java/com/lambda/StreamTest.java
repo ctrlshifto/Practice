@@ -40,12 +40,12 @@ public class StreamTest {
          * 清单 6. 流转换为其它数据结构
          */
         /* 1.Array */
-//        String[] array = (String[]) stream.toArray(String[]::new);
-//        /* 2.Collection */
-//        List<String>list1 = (List<String>) stream.collect(Collectors.toList());
-//        List<String>list2 = (List<String>) stream.collect(Collectors.toCollection(ArrayList::new));
-//        /* 3.String */
-//        String str = stream.collect(Collectors.joining()).toString();
+//        string[] array = (string[]) stream.toArray(string[]::new);
+//        /* 2.collection */
+//        List<string>list1 = (List<string>) stream.collect(Collectors.toList());
+//        List<string>list2 = (List<string>) stream.collect(Collectors.toCollection(arrayList::new));
+//        /* 3.string */
+//        string str = stream.collect(Collectors.joining()).toString();
 //        /* 一个 Stream 只可以使用一次，上面的代码为了简洁而重复使用了数次。 */
 
         /**
