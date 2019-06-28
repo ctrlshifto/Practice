@@ -1,4 +1,4 @@
-package com.simgleton_pattern;
+package com.simgletonpattern;
 
 public class Minister {
     public static void main(String[] args) {
