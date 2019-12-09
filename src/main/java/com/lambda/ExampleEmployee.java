@@ -1,7 +1,10 @@
 package com.lambda;
 
 
+import cn.hutool.json.JSONUtil;
+
 import java.util.*;
+import java.util.function.Supplier;
 import java.util.stream.Collectors;
 
 /**
@@ -28,7 +31,7 @@ public class ExampleEmployee {
     }
 
     private static Map<String, Integer> generateMapData() {
-        Map<String, Integer> items =new Hashtable<>(7,1);
+        Map<String, Integer> items = new Hashtable<>(7, 1);
         items.put("A", 10);
         items.put("B", 20);
         items.put("C", 30);
@@ -43,7 +46,7 @@ public class ExampleEmployee {
         List<Employee> results = employeeList;
 
         //看看实体类添加进去没
-        employeeList.forEach((employee)-> System.out.println(employee.getName() +"，"+employee.getSalary()+","+employee.getOffice()));
+        employeeList.forEach((employee) -> System.out.println(employee.getName() + "，" + employee.getSalary() + "," + employee.getOffice()));
 
         System.out.println("\n//anyMatch");
         for (Employee employee : employeeList) {
@@ -161,5 +164,28 @@ public class ExampleEmployee {
         Optional<String> optional = Optional.of("hello");
         System.out.println(optional.isPresent());
 
+        System.out.println("\n获得传入员工中不在new York 的工资总和");
+        Employee employee = new Employee("Steve", 6000, "London");
+        List<Employee> arrayList = new ArrayList<>();
+        arrayList.add(employee);
+        int notInNewYorkSalarySum = getNotInNewYorkSalarySum(() ->
+                {
+                    return arrayList;
+                }
+        );
+        System.out.println(notInNewYorkSalarySum);
+
+    }
+
+    /**
+     * 获得传入员工中不在new York 的工资总和
+     */
+    private static int getNotInNewYorkSalarySum(Supplier<List<Employee>> employeeSupplier) {
+        List<Employee> employee = employeeSupplier.get();
+        return employee.stream().filter(employee1 -> !"New York".equals(employee1.getOffice()))
+                .mapToInt(Employee::getSalary)
+                /* peek 可以查看流中的值 */
+                .peek(employee2 -> System.out.println(JSONUtil.toJsonPrettyStr(employee2)))
+                .sum();
     }
 }
