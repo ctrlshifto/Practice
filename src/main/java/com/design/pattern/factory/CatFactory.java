@@ -1,4 +1,4 @@
-package com.factory;
+package com.design.pattern.factory;
 
 
 // 继承着宠物工厂

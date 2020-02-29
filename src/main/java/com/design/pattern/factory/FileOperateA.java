@@ -1,4 +1,4 @@
-package com.factory;
+package com.design.pattern.factory;
 
 
 import java.io.FileNotFoundException;

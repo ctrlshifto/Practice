@@ -1,4 +1,4 @@
-package com.factory;
+package com.design.pattern.factory;
 
 
 public abstract class Animal {

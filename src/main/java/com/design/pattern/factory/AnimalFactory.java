@@ -1,4 +1,4 @@
-package com.factory;
+package com.design.pattern.factory;
 
 
 // 号称什么宠物都有

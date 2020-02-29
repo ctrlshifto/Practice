@@ -1,4 +1,4 @@
-package com.simgletonpattern;
+package com.design.pattern.singletonpattern;
 
 public class StaticInnerClassLazy {
     private StaticInnerClassLazy(){

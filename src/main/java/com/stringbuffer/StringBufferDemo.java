@@ -1,6 +1,6 @@
-package com.stringbuilder;
+package com.stringbuffer;
 
-public class Stringbuilder {
+public class StringBufferDemo {
     public static void main(String[] args) {
         //在堆内存创建了一个对象
         StringBuffer sb = new StringBuffer();

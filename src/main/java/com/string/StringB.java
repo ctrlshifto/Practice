@@ -13,9 +13,5 @@ public class StringB {
         System.out.println(s1.equals(s2));//true
 
 
-
-
-
-
     }
 }

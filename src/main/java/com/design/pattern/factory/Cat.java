@@ -1,4 +1,4 @@
-package com.factory;
+package com.design.pattern.factory;
 
 
 public class Cat extends Animal {
