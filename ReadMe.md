@@ -1,4 +1,5 @@
 ## 目录说明
+src.main.com目录说明
 - arrayList ArrayList --- 使用demo
 
 - design.pattern --- 设计模式demo
@@ -19,3 +20,4 @@
 - regexp --- 正则匹配demo
 - string --- Jvm是如何优化string的
 - stringbuffer --- stringbuffer原理
+- bloom 布隆过滤器demo
