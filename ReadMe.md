@@ -20,4 +20,5 @@ src.main.com目录说明
 - regexp --- 正则匹配demo
 - string --- Jvm是如何优化string的
 - stringbuffer --- stringbuffer原理
-- bloom 布隆过滤器demo
+- bloom --- 布隆过滤器demo
+- garbage --- JVM垃圾回收demo 
