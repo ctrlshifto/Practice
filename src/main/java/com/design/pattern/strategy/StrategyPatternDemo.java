@@ -1,5 +1,9 @@
 package com.design.pattern.strategy;
 
+import com.withoutIf.IfFunction;
+
+import java.util.HashMap;
+
 /**
  * @author WhomHim
  * @description
@@ -15,5 +19,17 @@ public class StrategyPatternDemo {
 
         context = new Context(new OperationMultiply());
         System.out.println("10 * 5 = " + context.executeStrategy(10, 5));
+
+        /* use without if */
+        IfFunction<String> ifFunction = new IfFunction<>(new HashMap<>(5));
+
+        ifFunction
+                .add("加法", () -> System.out.println(new Context(new OperationAdd()).executeStrategy(10, 5)))
+                .add("减法", () -> System.out.println(new Context(new OperationSubstract()).executeStrategy(10, 5)))
+                .doIfWithDefault("乘法", () -> System.out.println(new Context(new OperationMultiply()).executeStrategy(10, 5)));
+
+        ifFunction.doIf("加法");
+        ifFunction.doIf("减法");
+        ifFunction.doIf("乘法");
     }
 }
