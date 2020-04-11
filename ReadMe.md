@@ -12,6 +12,7 @@ src.main.com目录说明
 - elasticsearch --- 简单的es使用demo
 - Integer --- ==和equals的区别
 - lambda  --- Java8 lambda函数式编程的最佳实践
+    - custom 自定义函数式接口 
 - localdate --- localdate的demo
 - mq --- 消息队列中间件的demo
     - activemq ActiveMq的demo
@@ -24,6 +25,6 @@ src.main.com目录说明
 - garbage --- JVM垃圾回收demo 
 - withoutIf --- 在也不需要写if啦~~~~~~~~~~
 
-###### src.test.java.ApacheCommon
+src.test.java.ApacheCommon
  - CsvTest --- 如何导出csv
  

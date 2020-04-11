@@ -4,6 +4,7 @@ package com.lambda;
 import cn.hutool.json.JSONUtil;
 
 import java.util.*;
+import java.util.function.Consumer;
 import java.util.function.Supplier;
 import java.util.stream.Collectors;
 
@@ -175,6 +176,8 @@ public class ExampleEmployee {
         );
         System.out.println(notInNewYorkSalarySum);
 
+
+        forEach(Arrays.asList("Lambde", "test", "stream"), System.out::println);
     }
 
     /**
@@ -188,4 +191,18 @@ public class ExampleEmployee {
                 .peek(employee2 -> System.out.println(JSONUtil.toJsonPrettyStr(employee2)))
                 .sum();
     }
+
+    /**
+     * Consumer接口也是个函数式接口，只有该接口只含有一个未实现的accept(T t)方法。返回值是void，用于封装在日常生活中没有返回值
+     * 情况的代码，比如遍历一个集合并且打印每个元素，我们即可通过Consumer接口实现一个forEach方法。接收一个集合并且使用Lambda
+     * 书写需要对集合的操作，在Consumer参数中即可拿到每一个集合中的元素进行操作。
+     * <p>
+     * Consumer<T>提供了一个accept方法，返回void类型。
+     */
+    public static <T> void forEach(List<T> list, Consumer<T> s) {
+        for (T t : list) {
+            s.accept(t);
+        }
+    }
+
 }
