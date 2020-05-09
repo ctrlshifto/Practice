@@ -10,6 +10,8 @@ src.main.com目录说明
     - singletonpattern --- 单例模式
     
 - elasticsearch --- 简单的es使用demo
+- garbage --- JVM垃圾回收demo 
+- guava --- guava的相关demo
 - Integer --- ==和equals的区别
 - lambda  --- Java8 lambda函数式编程的最佳实践
     - custom 自定义函数式接口 
@@ -22,7 +24,6 @@ src.main.com目录说明
 - string --- Jvm是如何优化string的
 - stringbuffer --- stringbuffer原理
 - bloom --- 布隆过滤器demo
-- garbage --- JVM垃圾回收demo 
 - withoutIf --- 在也不需要写if啦~~~~~~~~~~
 
 src.test.java.ApacheCommon
