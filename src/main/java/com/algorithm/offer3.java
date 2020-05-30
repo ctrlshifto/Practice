@@ -8,7 +8,7 @@ import org.springframework.util.StopWatch;
  * @date Create in 2020-5-30 23:42:15
  */
 public class offer3 {
-    public static void main(String[] args) throws InterruptedException {
+    public static void main(String[] args)  {
         int[][]array={
                 {1,2,8,9},
                 {2,4,9,12}
