@@ -8,7 +8,8 @@ src.main.com目录说明
     - state    --- 状态模式 
     - strategy --- 策略模式
     - singletonpattern --- 单例模式
-    
+   
+- algorithm --- leetcode或剑指offer   
 - elasticsearch --- 简单的es使用demo
 - garbage --- JVM垃圾回收demo 
 - guava --- guava的相关demo
