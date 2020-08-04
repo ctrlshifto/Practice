@@ -48,7 +48,6 @@ public class preOrder {
         list.addAll(left);
         list.addAll(right);
         return list;
-
     }
 
     public static void main(String[] args) {
