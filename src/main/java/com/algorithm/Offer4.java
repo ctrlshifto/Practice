@@ -4,10 +4,10 @@ import java.util.stream.IntStream;
 
 /**
  * @author WhomHim
- * @description
+ * @description 替换字符串中的空格
  * @date Create in 2020-5-31 13:50:13
  */
-public class offer4 {
+public class Offer4 {
     public static void main(String[] args) {
         String s = "We Are Happy.";
         StringBuffer stringBuffer = new StringBuffer();

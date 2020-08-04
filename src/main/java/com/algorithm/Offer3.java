@@ -3,10 +3,10 @@ package com.algorithm;
 
 /**
  * @author WhomHim
- * @description
+ * @description 二维数组中查找目标值
  * @date Create in 2020-5-30 23:42:15
  */
-public class offer3 {
+public class Offer3 {
     public static void main(String[] args) {
         int[][] array = {
                 {1, 2, 8, 9},
