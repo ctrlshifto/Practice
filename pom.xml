@@ -165,10 +165,11 @@
             <artifactId>commons-csv</artifactId>
             <version>1.6</version>
         </dependency>
+
         <dependency>
-            <groupId>com.google.guava</groupId>
-            <artifactId>guava</artifactId>
-            <version>28.0-jre</version>
+            <groupId>io.vavr</groupId>
+            <artifactId>vavr</artifactId>
+            <version>0.10.3</version>
         </dependency>
 
     </dependencies>
