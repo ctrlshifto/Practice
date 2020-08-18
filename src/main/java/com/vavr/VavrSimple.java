@@ -8,6 +8,9 @@ import io.vavr.collection.List;
 import io.vavr.control.Try;
 import org.junit.Test;
 
+import static io.vavr.API.*;
+import static io.vavr.Predicates.isIn;
+
 /**
  * @author WhomHim
  * @description
@@ -101,10 +104,44 @@ public class VavrSimple {
         System.out.println(res);
     }
 
+    public static String bmiFormat(double height, double weight) {
+        double bmi = weight / (height * height);
+        return Match(bmi).of(
+                // else if (bmi < 18.5)
+                Case($(v -> v < 18.5), () -> "有些许晃荡！"),
+                // else if (bmi < 25)
+                Case($(v -> v < 25), () -> "继续加油哦！"),
+                // else if (bmi < 30)
+                Case($(v -> v < 30), () -> "你是真的稳！"),
+                // else
+                Case($(), () -> "难受！")
+        );
+    }
+
+    @Test
+    public void MatchDemo() {
+        String arg = "-h";
+        Object of = Match(arg).of(
+                Case($(isIn("-h", "--help")), run(this::Hello)),
+                Case($(isIn("-v", "--version")), "2"),
+                Case($(), o -> run(() -> {
+                    throw new IllegalArgumentException(arg);
+                }))
+
+        );
+        System.out.println(of);
+    }
+
+    private void Hello() {
+        System.out.println("hello world!");
+    }
+
     public static void main(String[] args) {
-        Tuples();
-        Functions();
-        String s = testTryWithRecover(new IllegalStateException());
+//        Tuples();
+//        Functions();
+//        String s = testTryWithRecover(new IllegalStateException());
+//        System.out.println(s);
+        String s = bmiFormat(175, 60);
         System.out.println(s);
     }
 }
