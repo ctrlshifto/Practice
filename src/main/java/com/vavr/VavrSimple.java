@@ -8,6 +8,8 @@ import io.vavr.collection.List;
 import io.vavr.control.Try;
 import org.junit.Test;
 
+import java.util.function.Predicate;
+
 import static io.vavr.API.*;
 import static io.vavr.Predicates.isIn;
 
@@ -122,12 +124,24 @@ public class VavrSimple {
     public void MatchDemo() {
         String arg = "-h";
         Object of = Match(arg).of(
+                Case($(Predicate.isEqual("-1")), run(this::Hello)),
+                Case($(Predicate.isEqual("-v")), "2"),
+                Case($(), o -> run(() -> {
+                    throw new IllegalArgumentException(arg);
+                }))
+        );
+        System.out.println(of);
+    }
+
+    @Test
+    public void MatchDemo2() {
+        String arg = "asd";
+        Object of = Match(arg).of(
                 Case($(isIn("-h", "--help")), run(this::Hello)),
                 Case($(isIn("-v", "--version")), "2"),
                 Case($(), o -> run(() -> {
                     throw new IllegalArgumentException(arg);
                 }))
-
         );
         System.out.println(of);
     }
