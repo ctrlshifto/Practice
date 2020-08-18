@@ -62,13 +62,23 @@ public class VavrSimple {
     }
 
     @SuppressWarnings("divzero")
-    private static void tryDemo() {
+    @Test
+    public void tryDemo() {
         Try.of(() -> 1 / 0)
                 .andThen(r -> System.out.println("and then " + r))
                 .onFailure(error -> System.out.println("failure" + error.getMessage()))
                 .andFinally(() -> {
                     System.out.println("finally");
                 });
+    }
+
+    @Test
+    public void tryDemo2() {
+        String str = "hello word!";
+        Try.of(() -> str)
+                .filter(s -> !s.equals("hello word!"))
+                .onFailure(throwable -> System.out.println(throwable))
+                .getOrElse("s2");
     }
 
     private static String testTryWithRecover(Exception e) {
@@ -94,7 +104,6 @@ public class VavrSimple {
     public static void main(String[] args) {
         Tuples();
         Functions();
-        tryDemo();
         String s = testTryWithRecover(new IllegalStateException());
         System.out.println(s);
     }
