@@ -61,7 +61,7 @@ public class VavrSimple {
         of.append(1).append(3);
     }
 
-    @SuppressWarnings("divzero")
+    @SuppressWarnings({"divzero", "NumericOverflow"})
     @Test
     public void tryDemo() {
         Try.of(() -> 1 / 0)
@@ -77,7 +77,7 @@ public class VavrSimple {
         String str = "hello word!";
         Try.of(() -> str)
                 .filter(s -> !s.equals("hello word!"))
-                .onFailure(throwable -> System.out.println(throwable))
+                .onFailure(System.out::println)
                 .getOrElse("s2");
     }
 
