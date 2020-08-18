@@ -1,7 +1,12 @@
 package com.vavr;
 
-import io.vavr.*;
+import io.vavr.Function1;
+import io.vavr.Function2;
+import io.vavr.Tuple;
+import io.vavr.Tuple2;
 import io.vavr.collection.List;
+import io.vavr.control.Try;
+import org.junit.Test;
 
 /**
  * @author WhomHim
@@ -56,9 +61,41 @@ public class VavrSimple {
         of.append(1).append(3);
     }
 
-    public static void main(String[] args) {
-//        Tuples();
-        Functions();
+    @SuppressWarnings("divzero")
+    private static void tryDemo() {
+        Try.of(() -> 1 / 0)
+                .andThen(r -> System.out.println("and then " + r))
+                .onFailure(error -> System.out.println("failure" + error.getMessage()))
+                .andFinally(() -> {
+                    System.out.println("finally");
+                });
+    }
 
+    private static String testTryWithRecover(Exception e) {
+        return (String) Try.of(() -> {
+            throw e;
+        })
+                .recoverWith(NullPointerException.class, Try.of(() -> "NPE"))
+                .recoverWith(IllegalStateException.class, Try.of(() -> "IllegalState"))
+                .recoverWith(RuntimeException.class, Try.of(() -> "Unknown"))
+                .get();
+
+    }
+
+    @Test
+    public void testTryMap() {
+        String res = Try.of(() -> "hello world")
+                .map(String::toUpperCase)
+                .toOption()
+                .getOrElse(() -> "default");
+        System.out.println(res);
+    }
+
+    public static void main(String[] args) {
+        Tuples();
+        Functions();
+        tryDemo();
+        String s = testTryWithRecover(new IllegalStateException());
+        System.out.println(s);
     }
 }
