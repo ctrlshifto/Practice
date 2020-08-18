@@ -11,8 +11,7 @@ import org.junit.Test;
 import java.util.function.Predicate;
 
 import static io.vavr.API.*;
-import static io.vavr.Predicates.isIn;
-
+import static io.vavr.Predicates.*;
 /**
  * @author WhomHim
  * @description
@@ -122,13 +121,11 @@ public class VavrSimple {
 
     @Test
     public void MatchDemo() {
-        String arg = "-h";
+        String arg = "-v";
         Object of = Match(arg).of(
-                Case($(Predicate.isEqual("-1")), run(this::Hello)),
+                Case($(Predicate.isEqual("-1")), "1"),
                 Case($(Predicate.isEqual("-v")), "2"),
-                Case($(), o -> run(() -> {
-                    throw new IllegalArgumentException(arg);
-                }))
+                Case($(Predicate.isEqual("-v1")), "3")
         );
         System.out.println(of);
     }
