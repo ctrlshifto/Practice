@@ -1,9 +1,7 @@
 package com.vavr;
 
-import io.vavr.Function1;
-import io.vavr.Function2;
-import io.vavr.Tuple;
-import io.vavr.Tuple2;
+import io.vavr.*;
+import io.vavr.collection.List;
 
 /**
  * @author WhomHim
@@ -40,7 +38,7 @@ public class VavrSimple {
     }
 
 
-    private  static void Functions() {
+    private static void Functions() {
         Function2<Integer, Integer, Integer> sum = Integer::sum;
         //使用 andThen
         Function1<Integer, Integer> plusOne = a -> a + 1;
@@ -51,6 +49,11 @@ public class VavrSimple {
         //使用 compose
         Function1<Integer, Integer> add1AndMultiplyBy2WithCompose = multiplyByTwo.compose(plusOne);
         System.out.println(add1AndMultiplyBy2WithCompose.apply(2).intValue());
+    }
+
+    private static void List() {
+        List<Integer> of = List.of(1, 2, 3, 4);
+        of.append(1).append(3);
     }
 
     public static void main(String[] args) {
