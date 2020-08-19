@@ -12,6 +12,7 @@ import java.util.function.Predicate;
 
 import static io.vavr.API.*;
 import static io.vavr.Predicates.*;
+
 /**
  * @author WhomHim
  * @description
@@ -60,9 +61,14 @@ public class VavrSimple {
         System.out.println(add1AndMultiplyBy2WithCompose.apply(2).intValue());
     }
 
-    private static void List() {
+    @Test
+    public void List() {
+        // vavr 的 List 是不可变的
         List<Integer> of = List.of(1, 2, 3, 4);
-        of.append(1).append(3);
+//        List<Integer> append = of.append(1).append(3);
+        List<Integer> prepend = of.prepend(1).prepend(3);
+        System.out.println(of);
+        System.out.println(prepend);
     }
 
     @SuppressWarnings({"divzero", "NumericOverflow"})
