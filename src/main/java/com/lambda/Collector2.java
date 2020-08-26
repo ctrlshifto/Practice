@@ -42,9 +42,9 @@ public class Collector2 {
                 }},
                 /* 将元素添加到结果容器 */
                 (acc, candidate) -> {
-                    acc.get(isPrime(acc.get(true)
-                            , candidate)
-                    ).add(candidate);
+                    acc
+                            .get(isPrime(acc.get(true), candidate))
+                            .add(candidate);
                 },
                 /* 对结果容器进行转换 */
                 (map1, map2) -> {
