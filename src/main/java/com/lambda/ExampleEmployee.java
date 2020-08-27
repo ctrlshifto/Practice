@@ -7,6 +7,7 @@ import com.google.common.collect.Lists;
 import java.util.*;
 import java.util.function.Consumer;
 import java.util.function.Supplier;
+import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
 /**
@@ -180,6 +181,19 @@ public class ExampleEmployee {
 
 
         forEach(Arrays.asList("Lambde", "test", "stream"), System.out::println);
+
+        System.out.println("--- 简单的自定义收集器:");
+        HashSet<Object> collect = sortEmployeeList.stream()
+                .limit(2)
+                .collect(Collector.of(
+                        HashSet::new,
+                        Set::add,
+                        (left, right) -> {
+                            left.addAll(right);
+                            return left;
+                        }
+                ));
+        System.out.println("collect:" + collect);
     }
 
     /**
