@@ -2,6 +2,7 @@ package com.lambda;
 
 
 import cn.hutool.json.JSONUtil;
+import com.google.common.collect.Lists;
 
 import java.util.*;
 import java.util.function.Consumer;
@@ -10,25 +11,23 @@ import java.util.stream.Collectors;
 
 /**
  * @Author:WhomHim
- * @Description:
- * @Date: Create in 2019-3-17 15:13:50
- * @Modified by:
  */
 
+@SuppressWarnings("ConstantConditions")
 public class ExampleEmployee {
 
     private static List<Employee> employeeList = new ArrayList<>();
 
     static {
-        employeeList.add(new Employee("Steve", 6000, "London"));
-        employeeList.add(new Employee("Carrie", 10000, "New York"));
-        employeeList.add(new Employee("Peter", 7000, "New York"));
-        employeeList.add(new Employee("Alec", 6000, "London"));
-        employeeList.add(new Employee("Sarah", 8000, "London"));
-        employeeList.add(new Employee("Rebecca", 4000, "New York"));
-        employeeList.add(new Employee("Pat", 20000, "New York"));
-        employeeList.add(new Employee("Tammy", 9000, "New York"));
-        employeeList.add(new Employee("Fred", 15000, "Tokyo"));
+        employeeList.add(new Employee("Steve", 6000, "London", new ArrayList<>()));
+        employeeList.add(new Employee("Carrie", 10000, "New York", new ArrayList<>()));
+        employeeList.add(new Employee("Peter", 7000, "New York", new ArrayList<>()));
+        employeeList.add(new Employee("Alec", 6000, "London", new ArrayList<>()));
+        employeeList.add(new Employee("Sarah", 8000, "London", new ArrayList<>()));
+        employeeList.add(new Employee("Rebecca", 4000, "New York", new ArrayList<>()));
+        employeeList.add(new Employee("Pat", 20000, "New York", new ArrayList<>()));
+        employeeList.add(new Employee("Tammy", 9000, "New York", new ArrayList<>()));
+        employeeList.add(new Employee("Fred", 15000, "Tokyo", Lists.newArrayList("小明")));
     }
 
     private static Map<String, Integer> generateMapData() {
@@ -102,6 +101,13 @@ public class ExampleEmployee {
                 .collect(Collectors.toList());
         System.out.println(sortEmployeeList);
 
+        System.out.println("\n 找出员工的家人有 叫小明 的");
+        List<String> familyName = sortEmployeeList.stream()
+                .flatMap(employee -> employee.getFamilyName().stream())
+                .filter(employeeList -> "小明".equals(employeeList))
+                .collect(Collectors.toList());
+        System.out.println("\n 找出员工的家人有 叫小明 的:" + familyName);
+
         System.out.println("\n 按照名字的升序列出员工信息");
         List<Employee> sortEmployeeByName = employeeList.stream()
                 .sorted(Comparator.comparing(Employee::getName).reversed())
@@ -166,14 +172,10 @@ public class ExampleEmployee {
         System.out.println(optional.isPresent());
 
         System.out.println("\n获得传入员工中不在new York 的工资总和");
-        Employee employee = new Employee("Steve", 6000, "London");
+        Employee employee = new Employee("Steve", 6000, "London",new ArrayList<>());
         List<Employee> arrayList = new ArrayList<>();
         arrayList.add(employee);
-        int notInNewYorkSalarySum = getNotInNewYorkSalarySum(() ->
-                {
-                    return arrayList;
-                }
-        );
+        int notInNewYorkSalarySum = getNotInNewYorkSalarySum(() -> arrayList);
         System.out.println(notInNewYorkSalarySum);
 
 
@@ -200,9 +202,7 @@ public class ExampleEmployee {
      * Consumer<T>提供了一个accept方法，返回void类型。
      */
     public static <T> void forEach(List<T> list, Consumer<T> s) {
-        for (T t : list) {
-            s.accept(t);
-        }
+        list.forEach(s);
     }
 
 }

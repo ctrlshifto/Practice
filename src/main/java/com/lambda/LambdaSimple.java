@@ -20,10 +20,10 @@ public class LambdaSimple {
     public static void main(String[] args) {
         String[] atp = {"Rafael Nadal", "Novak Djokovic",
                 "Stanislas Wawrinka",
-                "David Ferrer","Roger Federer",
-                "Andy Murray","Tomas Berdych",
+                "David Ferrer", "Roger Federer",
+                "Andy Murray", "Tomas Berdych",
                 "Juan Martin Del Potro"};
-        List<String> players =  Arrays.asList(atp);
+        List<String> players = Arrays.asList(atp);
 
 // 以前的循环方式
         for (String player : players) {
@@ -38,7 +38,7 @@ public class LambdaSimple {
     }
 
     @Test
-    public void mapAndFlatmap(){
+    public void mapAndFlatmap() {
         List<String> teamIndia = Arrays.asList("Virat", "Dhoni", "Jadeja");
         List<String> teamAustralia = Arrays.asList("Warner", "Watson", "Smith");
         List<String> teamEngland = Arrays.asList("Alex", "Bell", "Broad");
@@ -61,8 +61,8 @@ public class LambdaSimple {
         // Let's print all players before Java 8
         List<String> listOfAllPlayers = new ArrayList<>();
 
-        for(List<String> team : playersInWorldCup2016){
-            for(String name : team){
+        for (List<String> team : playersInWorldCup2016) {
+            for (String name : team) {
                 listOfAllPlayers.add(name);
             }
         }
@@ -82,13 +82,13 @@ public class LambdaSimple {
     }
 
     @Test
-    public void reduce0(){
+    public void reduce0() {
         Optional accResult = Stream.of(1, 2, 3, 4)
                 .reduce((acc, item) -> {
-                    System.out.println("acc : "  + acc);
+                    System.out.println("acc : " + acc);
                     acc += item;
                     System.out.println("item: " + item);
-                    System.out.println("acc+ : "  + acc);
+                    System.out.println("acc+ : " + acc);
                     System.out.println("--------");
                     return acc;
                 });
@@ -97,13 +97,13 @@ public class LambdaSimple {
     }
 
     @Test
-    public void reduce1(){
+    public void reduce1() {
         int accResult = Stream.of(1, 2, 3, 4)
                 .reduce(0, (acc, item) -> {
-                    System.out.println("acc : "  + acc);
+                    System.out.println("acc : " + acc);
                     acc += item;
                     System.out.println("item: " + item);
-                    System.out.println("acc+ : "  + acc);
+                    System.out.println("acc+ : " + acc);
                     System.out.println("--------");
                     return acc;
                 });
@@ -114,9 +114,8 @@ public class LambdaSimple {
     @Test
     public void reduce2() throws Exception {
         System.out.println("=====reduce:将流中元素反复结合起来，得到一个值==========");
-        Stream<Integer> stream = Stream.iterate(1, x -> x+1).limit(100);
-//        stream.forEach(System.out::println);
-        Integer sum = stream.reduce(0,(x,y)-> x+y);
+        Stream<Integer> stream = Stream.iterate(1, x -> x + 1).limit(100);
+        Integer sum = stream.reduce(0, (x, y) -> x + y);
         System.out.println(sum);
     }
 }
