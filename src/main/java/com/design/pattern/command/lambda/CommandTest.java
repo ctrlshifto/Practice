@@ -1,4 +1,4 @@
-package com.design.pattern.command;
+package com.design.pattern.command.lambda;
 
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;

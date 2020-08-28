@@ -1,4 +1,4 @@
-package com.design.pattern.command;
+package com.design.pattern.command.lambda;
 
 import java.util.ArrayList;
 import java.util.List;
