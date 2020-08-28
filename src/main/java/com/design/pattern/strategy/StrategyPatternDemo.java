@@ -20,6 +20,12 @@ public class StrategyPatternDemo {
         context = new Context(new OperationMultiply());
         System.out.println("10 * 5 = " + context.executeStrategy(10, 5));
 
+        System.out.println("----- 利用lambda表达式简化的策略模式：");
+        Context context2 = new Context(Integer::sum);
+        System.out.println("10 + 5 = " + context2.executeStrategy(10, 5));
+        System.out.println(context2);
+        System.out.println("----- 利用lambda表达式简化的策略模式");
+
         /* use without if */
         IfFunction<String> ifFunction = new IfFunction<>(new HashMap<>(5));
 
