@@ -10,19 +10,18 @@ import java.util.concurrent.Executor;
  * @description
  * @date Create in 2020/5/9 15:01
  */
+@SuppressWarnings("UnstableApiUsage")
 public class EventBusUtil {
+
     private static EventBus eventBus;
     private static AsyncEventBus asyncEventBus;
 
-    private static Executor executor = new Executor() {
-        @Override
-        public void execute(Runnable command) {
-            new Thread(command).start();
-        }
-    };
+    private static Executor executor = command -> new Thread(command).start();
 
-    //双重锁单例模式
-    private static AsyncEventBus getAsynEventBus() {
+    /**
+     * 双重锁单例模式
+     */
+    private static AsyncEventBus getAsyncEventBus() {
         if (asyncEventBus == null) {
             synchronized (AsyncEventBus.class) {
                 if (asyncEventBus == null) {
@@ -33,7 +32,9 @@ public class EventBusUtil {
         return asyncEventBus;
     }
 
-    //双重锁单例模式
+    /**
+     * 双重锁单例模式
+     */
     private static EventBus getEventBus() {
         if (eventBus == null) {
             synchronized (EventBus.class) {
@@ -49,14 +50,24 @@ public class EventBusUtil {
         getEventBus().post(event);
     }
 
-    //异步方式发送事件
+    /**
+     * 异步方式发送事件
+     */
     public static void asyncPost(Object event) {
-        getAsynEventBus().post(event);
+        getAsyncEventBus().post(event);
     }
 
     public static void register(Object object) {
         getEventBus().register(object);
-        getAsynEventBus().register(object);
+        getAsyncEventBus().register(object);
+    }
+
+    public static void registerEventBus(Object object) {
+        getEventBus().register(object);
+    }
+
+    public static void registerAsyncEventBus(Object object) {
+        getAsyncEventBus().register(object);
     }
 
 }
