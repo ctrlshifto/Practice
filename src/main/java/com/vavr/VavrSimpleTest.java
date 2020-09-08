@@ -3,10 +3,13 @@ package com.vavr;
 import io.vavr.Tuple;
 import io.vavr.*;
 import io.vavr.collection.List;
+import io.vavr.control.Either;
 import io.vavr.control.Try;
 import org.junit.Test;
 
+import java.util.Random;
 import java.util.function.Predicate;
+import java.util.function.Supplier;
 
 import static io.vavr.API.*;
 import static io.vavr.Predicates.isIn;
@@ -51,6 +54,20 @@ public class VavrSimpleTest {
         System.out.println("--------> 元组使用场景:函数返回多个参数");
     }
 
+    @Test
+    public void eitherTest() {
+        Supplier<Either<Throwable, String>> compute = () -> new Random().nextBoolean()
+                ? Either.left(new RuntimeException("Boom!")) : Either.right("Hello");
+
+        //Either 的 map 和 mapLeft 方法分别对右值和左值进行计算。
+        Either<String, String> either = compute.get()
+                .map(str -> str + " World")
+                .mapLeft(Throwable::getMessage);
+
+        System.out.println(either.isRight());
+        System.out.println(either.get());
+        System.out.println(either.getLeft());
+    }
 
     private static void functions() {
         Function2<Integer, Integer, Integer> sum = Integer::sum;
