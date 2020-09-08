@@ -18,9 +18,9 @@ import static io.vavr.Predicates.*;
  * @description
  * @date Create in 2020/8/12 16:40
  */
-public class VavrSimple {
+public class VavrSimpleTest {
 
-    private static void Tuples() {
+    private static void tuples() {
         System.out.println("------------> Tuples");
         // (Java, 8)
         Tuple2<String, Integer> java8 = Tuple.of("Java", 8);
@@ -48,7 +48,7 @@ public class VavrSimple {
     }
 
 
-    private static void Functions() {
+    private static void functions() {
         Function2<Integer, Integer, Integer> sum = Integer::sum;
         //使用 andThen
         Function1<Integer, Integer> plusOne = a -> a + 1;
@@ -62,10 +62,10 @@ public class VavrSimple {
     }
 
     @Test
-    public void List() {
+    public void list() {
         // vavr 的 List 是不可变的
         List<Integer> of = List.of(1, 2, 3, 4);
-//        List<Integer> append = of.append(1).append(3);
+        List<Integer> append = of.append(1).append(3);
         List<Integer> prepend = of.prepend(1).prepend(3);
         System.out.println(of);
         System.out.println(prepend);
@@ -77,16 +77,14 @@ public class VavrSimple {
         Try.of(() -> 1 / 0)
                 .andThen(r -> System.out.println("and then " + r))
                 .onFailure(error -> System.out.println("failure" + error.getMessage()))
-                .andFinally(() -> {
-                    System.out.println("finally");
-                });
+                .andFinally(() -> System.out.println("finally"));
     }
 
     @Test
     public void tryDemo2() {
         String str = "hello word!";
         Try.of(() -> str)
-                .filter(s -> !s.equals("hello word!"))
+                .filter(s -> !"hello word!".equals(s))
                 .onFailure(System.out::println)
                 .getOrElse("s2");
     }
@@ -126,7 +124,7 @@ public class VavrSimple {
     }
 
     @Test
-    public void MatchDemo() {
+    public void matchDemo() {
         String arg = "-v";
         Object of = Match(arg).of(
                 Case($(Predicate.isEqual("-1")), "1"),
@@ -137,10 +135,10 @@ public class VavrSimple {
     }
 
     @Test
-    public void MatchDemo2() {
+    public void matchDemo2() {
         String arg = "asd";
         Object of = Match(arg).of(
-                Case($(isIn("-h", "--help")), run(this::Hello)),
+                Case($(isIn("-h", "--help")), run(this::hello)),
                 Case($(isIn("-v", "--version")), "2"),
                 Case($(), o -> run(() -> {
                     throw new IllegalArgumentException(arg);
@@ -149,16 +147,16 @@ public class VavrSimple {
         System.out.println(of);
     }
 
-    private void Hello() {
+    private void hello() {
         System.out.println("hello world!");
     }
 
     public static void main(String[] args) {
-//        Tuples();
-//        Functions();
-//        String s = testTryWithRecover(new IllegalStateException());
-//        System.out.println(s);
-        String s = bmiFormat(175, 60);
-        System.out.println(s);
+        tuples();
+        functions();
+        String testTryWithRecover = testTryWithRecover(new IllegalStateException());
+        System.out.println(testTryWithRecover);
+        String bmiFormat = bmiFormat(175, 60);
+        System.out.println(bmiFormat);
     }
 }
