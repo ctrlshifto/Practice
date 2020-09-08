@@ -1,9 +1,7 @@
 package com.vavr;
 
-import io.vavr.Function1;
-import io.vavr.Function2;
 import io.vavr.Tuple;
-import io.vavr.Tuple2;
+import io.vavr.*;
 import io.vavr.collection.List;
 import io.vavr.control.Try;
 import org.junit.Test;
@@ -11,7 +9,7 @@ import org.junit.Test;
 import java.util.function.Predicate;
 
 import static io.vavr.API.*;
-import static io.vavr.Predicates.*;
+import static io.vavr.Predicates.isIn;
 
 /**
  * @author WhomHim
@@ -20,7 +18,8 @@ import static io.vavr.Predicates.*;
  */
 public class VavrSimpleTest {
 
-    private static void tuples() {
+    @Test
+    public void tuples() {
         System.out.println("------------> Tuples");
         // (Java, 8)
         Tuple2<String, Integer> java8 = Tuple.of("Java", 8);
@@ -45,11 +44,17 @@ public class VavrSimpleTest {
         );
         System.out.println(apply);
         System.out.println("------------> Tuples");
+
+        System.out.println("--------> 元组使用场景:函数返回多个参数");
+        Tuple3<String, Integer, Integer> test = Tuple.of("test", 1, 2);
+        System.out.println("--------> 将 Tuple1 return：" + test);
+        System.out.println("--------> 元组使用场景:函数返回多个参数");
     }
 
 
     private static void functions() {
         Function2<Integer, Integer, Integer> sum = Integer::sum;
+        System.out.println(sum);
         //使用 andThen
         Function1<Integer, Integer> plusOne = a -> a + 1;
         Function1<Integer, Integer> multiplyByTwo = a -> a * 2;
@@ -65,7 +70,6 @@ public class VavrSimpleTest {
     public void list() {
         // vavr 的 List 是不可变的
         List<Integer> of = List.of(1, 2, 3, 4);
-        List<Integer> append = of.append(1).append(3);
         List<Integer> prepend = of.prepend(1).prepend(3);
         System.out.println(of);
         System.out.println(prepend);
@@ -152,7 +156,6 @@ public class VavrSimpleTest {
     }
 
     public static void main(String[] args) {
-        tuples();
         functions();
         String testTryWithRecover = testTryWithRecover(new IllegalStateException());
         System.out.println(testTryWithRecover);
