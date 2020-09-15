@@ -23,7 +23,7 @@ import java.util.List;
  * @date Create in 2020-8-5 23:37:10
  */
 public class InOrder {
-    public static List<Integer> inorderTraversal(TreeNode root) {
+    private static List<Integer> inorderTraversal(TreeNode root) {
         if (root == null) {
             return new ArrayList<>();
         }

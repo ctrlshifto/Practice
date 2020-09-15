@@ -25,7 +25,7 @@ import java.util.List;
  * @date Create in 2020-8-11 21:42:04
  */
 public class PostOrder {
-    public static List<Integer> postOrderTraversal(TreeNode root) {
+    private static List<Integer> postOrderTraversal(TreeNode root) {
         if (root == null) {
             return new ArrayList<>();
         }
