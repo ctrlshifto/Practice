@@ -1,14 +1,15 @@
 package com.algorithm.binarytree;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 
 /**
  * @author WhomHim
  * @description
- * 给定一个二叉树，返回它的中序 遍历。
- *
+ * 给定一个二叉树，返回它的中序遍历。
+ * <p>中序遍历是先遍历左子树，然后访问根节点，然后遍历右子树。</p>
  * 示例:
  *
  * 输入: [1,null,2,3]
@@ -36,6 +37,30 @@ public class InOrder {
         return list;
     }
 
+    /**
+     * 不用递归的中序遍历
+     * @param root TreeNode
+     * @return List<Integer>
+     */
+    private static List<Integer>inorderTraversalWithNoRecursive(TreeNode root){
+        if (root == null) {
+            return new ArrayList<>();
+        }
+        LinkedList<TreeNode>linkList = new LinkedList<>();
+        LinkedList<Integer>returnList = new LinkedList<>();
+
+        while (root != null || !linkList.isEmpty()) {
+            while (root != null) {
+                linkList.push(root);
+                root = root.left;
+            }
+            root = linkList.pop();
+            returnList.add(root.val);
+            root = root.right;
+        }
+        return returnList;
+    }
+
     public static void main(String[] args) {
         TreeNode treeNode2 = new TreeNode(2)
                 .setLeft(new TreeNode(3))
@@ -43,7 +68,12 @@ public class InOrder {
         TreeNode treeNode = new TreeNode(1)
                 .setRight(treeNode2)
                 .setLeft(null);
+
         List<Integer> valList = inorderTraversal(treeNode);
         System.out.println(valList);
+
+        List<Integer> output = inorderTraversalWithNoRecursive(treeNode);
+        System.out.println(output);
+
     }
 }

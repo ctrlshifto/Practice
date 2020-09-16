@@ -7,6 +7,7 @@ import java.util.List;
 /**
  * @author WhomHim
  * @description 给定一个二叉树，返回它的 前序 遍历。
+ * <p>前序遍历首先访问根节点，然后遍历左子树，最后遍历右子树。</p>
  * <p>
  *  示例:
  * <p>
