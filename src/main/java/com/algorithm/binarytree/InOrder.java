@@ -42,6 +42,7 @@ public class InOrder {
      * @return List<Integer>
      */
     private static List<Integer> inorderTraversalWithNoRecursive(TreeNode root) {
+
         LinkedList<TreeNode> linkList = new LinkedList<>();
         LinkedList<Integer> returnList = new LinkedList<>();
 
