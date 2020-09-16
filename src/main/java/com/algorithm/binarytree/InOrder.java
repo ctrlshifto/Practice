@@ -7,20 +7,18 @@ import java.util.List;
 
 /**
  * @author WhomHim
- * @description
- * 给定一个二叉树，返回它的中序遍历。
+ * @description 给定一个二叉树，返回它的中序遍历。
  * <p>中序遍历是先遍历左子树，然后访问根节点，然后遍历右子树。</p>
  * 示例:
- *
+ * <p>
  * 输入: [1,null,2,3]
- *    1
- *     \
- *      2
- *     /
- *    3
- *
+ * 1
+ * \
+ * 2
+ * /
+ * 3
+ * <p>
  * 输出: [1,3,2]
- *
  * @date Create in 2020-8-5 23:37:10
  */
 public class InOrder {
@@ -39,15 +37,16 @@ public class InOrder {
 
     /**
      * 不用递归的中序遍历
+     *
      * @param root TreeNode
      * @return List<Integer>
      */
-    private static List<Integer>inorderTraversalWithNoRecursive(TreeNode root){
+    private static List<Integer> inorderTraversalWithNoRecursive(TreeNode root) {
         if (root == null) {
             return new ArrayList<>();
         }
-        LinkedList<TreeNode>linkList = new LinkedList<>();
-        LinkedList<Integer>returnList = new LinkedList<>();
+        LinkedList<TreeNode> linkList = new LinkedList<>();
+        LinkedList<Integer> returnList = new LinkedList<>();
 
         while (root != null || !linkList.isEmpty()) {
             while (root != null) {
@@ -72,7 +71,17 @@ public class InOrder {
         List<Integer> valList = inorderTraversal(treeNode);
         System.out.println(valList);
 
-        List<Integer> output = inorderTraversalWithNoRecursive(treeNode);
+        TreeNode tn2 = new TreeNode(3)
+                .setLeft(new TreeNode(6))
+                .setRight(null);
+        TreeNode tn3 = new TreeNode(2)
+                .setLeft(new TreeNode(4))
+                .setRight(new TreeNode(5));
+        TreeNode tn = new TreeNode(1)
+                .setLeft(tn3)
+                .setRight(tn2);
+
+        List<Integer> output = inorderTraversalWithNoRecursive(tn);
         System.out.println(output);
 
     }
