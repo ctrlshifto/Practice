@@ -1,6 +1,7 @@
 package com.algorithm.binarytree;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 /**
@@ -39,6 +40,30 @@ public class PostOrder {
         return list;
     }
 
+    private static List<Integer> postOrderTraversalWithNoRecursive(TreeNode root) {
+        if (root == null) {
+            return new ArrayList<>();
+        }
+        LinkedList<TreeNode> linkList = new LinkedList<>();
+        LinkedList<Integer> returnList = new LinkedList<>();
+
+        linkList.add(root);
+        while (!linkList.isEmpty()) {
+            //拿链表最后面的元素出来
+            TreeNode treeNode = linkList.pollLast();
+            //元素添加到链表头
+            returnList.addFirst(treeNode.val);
+            if (treeNode.left != null) {
+                //先进后出
+                linkList.add(treeNode.left);
+            }
+            if (treeNode.right != null) {
+                linkList.add(treeNode.right);
+            }
+        }
+        return returnList;
+    }
+
     public static void main(String[] args) {
         TreeNode treeNode2 = new TreeNode(2)
                 .setLeft(new TreeNode(3))
@@ -48,5 +73,19 @@ public class PostOrder {
                 .setLeft(null);
         List<Integer> valList = postOrderTraversal(treeNode);
         System.out.println(valList);
+
+        TreeNode tn2 = new TreeNode(3)
+                .setLeft(new TreeNode(6))
+                .setRight(null);
+        TreeNode tn3 = new TreeNode(2)
+                .setLeft(new TreeNode(4))
+                .setRight(new TreeNode(5));
+        TreeNode tn = new TreeNode(1)
+                .setLeft(tn3)
+                .setRight(tn2);
+
+        List<Integer> output = postOrderTraversalWithNoRecursive(tn);
+        System.out.println(output);
     }
+
 }
