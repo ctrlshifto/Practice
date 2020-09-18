@@ -51,7 +51,7 @@ public class PostOrder {
         while (!linkList.isEmpty()) {
             //拿链表最后面的元素出来
             TreeNode treeNode = linkList.pollLast();
-            //元素添加到链表头
+            //元素添加到链表头,就是因为这一步控制根节点‘1’输出在最后面
             returnList.addFirst(treeNode.val);
             if (treeNode.left != null) {
                 //先进后出
