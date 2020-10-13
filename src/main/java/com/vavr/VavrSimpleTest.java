@@ -179,10 +179,10 @@ public class VavrSimpleTest {
 
     @Test
     public void matchDemo2() {
-        String arg = "asd";
+        String arg = "b";
         Object of = Match(arg).of(
-                Case($(isIn("-h", "--help")), run(this::hello)),
-                Case($(isIn("-v", "--version")), "2"),
+                Case($("a"), () -> run(this::hello)),
+                Case($("b"), "2"),
                 Case($(), o -> run(() -> {
                     throw new IllegalArgumentException(arg);
                 }))
