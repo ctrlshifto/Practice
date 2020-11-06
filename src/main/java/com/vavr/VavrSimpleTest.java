@@ -6,6 +6,7 @@ import io.vavr.collection.List;
 import io.vavr.collection.Map;
 import io.vavr.collection.Stream;
 import io.vavr.control.Either;
+import io.vavr.control.Option;
 import io.vavr.control.Try;
 import org.junit.Test;
 
@@ -215,6 +216,14 @@ public class VavrSimpleTest {
                 .toList();
         System.out.println(tuple2List);
         // 输出 List((1, a), (2, b))
+    }
+
+    @SuppressWarnings("ConstantConditions")
+    @Test
+    public void option() {
+        int a = 1;
+        Option<Integer> when = Option.when(a > 0, a);
+        System.out.println(when.get());
     }
 
     private void hello() {
