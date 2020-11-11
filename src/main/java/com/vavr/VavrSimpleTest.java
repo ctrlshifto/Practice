@@ -15,7 +15,6 @@ import java.util.function.Predicate;
 import java.util.function.Supplier;
 
 import static io.vavr.API.*;
-import static io.vavr.Predicates.isIn;
 
 /**
  * @author WhomHim
