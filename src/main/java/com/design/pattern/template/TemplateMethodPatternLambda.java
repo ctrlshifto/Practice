@@ -5,13 +5,18 @@ package com.design.pattern.template;
  * @description 函数式写法的模板方法模式
  * @date Create in 2020/12/3 15:16
  */
+@SuppressWarnings("ALL")
 public class TemplateMethodPatternLambda {
 
     interface Criteria {
-        void check() throws ApplicationDenied;
+        /**
+         *
+         * @throws ApplicationDeniedException ApplicationDeniedException
+         */
+        void check() throws ApplicationDeniedException;
     }
 
-    class LoanApplication {
+    static class LoanApplication {
 
         /**
          * 抽象方法
@@ -39,9 +44,9 @@ public class TemplateMethodPatternLambda {
         /**
          * 使用函数接口实现检查方法并没有排除继承的方式。我们可以显式地在这些类中使用
          * Lambda 表达式或者方法引用。
-         * @throws ApplicationDenied ApplicationDenied
+         * @throws ApplicationDeniedException ApplicationDenied
          */
-        public void checkLoanApplication() throws ApplicationDenied {
+        public void checkLoanApplication() throws ApplicationDeniedException {
             identity.check();
             creditHistory.check();
             incomeHistory.check();
@@ -88,11 +93,11 @@ public class TemplateMethodPatternLambda {
     }
 
 
-    class ApplicationDenied extends Exception {
+    static class ApplicationDeniedException extends Exception {
     }
 
 
-    class Company {
+    static class Company {
 
         public void checkIdentity() {
         }
