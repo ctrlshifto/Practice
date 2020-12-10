@@ -5,6 +5,8 @@ import io.vavr.Function2;
 import io.vavr.Function3;
 import org.junit.Test;
 
+import java.util.function.Function;
+
 /**
  * @author WhomHim
  * @date Create in 2020/12/9 16:45
@@ -43,5 +45,16 @@ public class FunctionTest {
         //使用 compose
         Function1<Integer, Integer> add1AndMultiplyBy2WithCompose = multiplyByTwo.compose(plusOne);
         System.out.println(add1AndMultiplyBy2WithCompose.apply(2).intValue());
+    }
+
+    Function<Integer, Function<Integer, Integer>> add = x -> y -> x + y;
+    Function2<Integer, Integer, Integer> add2 = (x, y) -> x + y;
+
+    @Test
+    public void add() {
+        Integer apply = add.apply(1).apply(2);
+        Integer apply1 = add2.apply(1, 2);
+        System.out.println(apply);
+        System.out.println(apply1);
     }
 }
