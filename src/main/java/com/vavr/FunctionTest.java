@@ -43,7 +43,7 @@ public class FunctionTest {
      * Composition - 组合
      */
     @Test
-    public   void composition() {
+    public void composition() {
         //使用 andThen
         Function1<Integer, Integer> plusOne = a -> a + 1;
         Function1<Integer, Integer> multiplyByTwo = a -> a * 2;
@@ -86,6 +86,6 @@ public class FunctionTest {
         Option<Integer> i2 = safeDivide.apply(4, 2);
         System.out.println(i2);
 
-        divide.apply(1,0);
+        divide.apply(1, 0);
     }
 }
