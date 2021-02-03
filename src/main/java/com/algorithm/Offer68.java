@@ -40,17 +40,41 @@ public class Offer68 {
             }
         }
 
-        return firstNodePath.stream()
-                .filter(firstNode -> secondNodePath.stream()
-                        .anyMatch(secondNode -> firstNode == secondNode))
-                .findFirst()
-                .orElse(null);
+        TreeNode node = null;
+        int n = Math.min(firstNodePath.size(), secondNodePath.size());
+        for (int i = 0; i < n; i++) {
+            if (firstNodePath.get(i) == secondNodePath.get(i)) {
+                node = firstNodePath.get(i);
+            }
+        }
+        return node;
     }
 
+//    //前序遍历搜索节点p或q
+//    static void getPath(TreeNode root, TreeNode node, List<TreeNode> path) {
+//        if (root == null) {
+//            return;
+//        }
+//        path.add(root);
+//        if (root == node) {
+//            return;
+//        }
+//        if (path.get(path.size() - 1) != node) {
+//            getPath(root.left, node, path);
+//        }
+//        if (path.get(path.size() - 1) != node) {
+//            getPath(root.right, node, path);
+//        }
+//        if (path.get(path.size() - 1) != node) {
+//            path.remove(path.size() - 1);
+//        }
+//    }
+
     public static void main(String[] args) {
+        final TreeNode treeNode5 = new TreeNode(4);
         TreeNode treeNode4 = new TreeNode(2)
                 .setLeft(new TreeNode(7))
-                .setRight(new TreeNode(4));
+                .setRight(treeNode5);
 
         TreeNode treeNode3 = new TreeNode(1)
                 .setLeft(new TreeNode(0))
