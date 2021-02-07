@@ -3,6 +3,7 @@ package com.algorithm;
 import com.algorithm.binarytree.TreeNode;
 
 import java.util.LinkedList;
+import java.util.List;
 
 /**
  * @author WhomHim
@@ -14,31 +15,12 @@ public class Offer68 {
         if (root == null) {
             return null;
         }
-        LinkedList<TreeNode> linkList = new LinkedList<>();
 
         LinkedList<TreeNode> firstNodePath = new LinkedList<>();
         LinkedList<TreeNode> secondNodePath = new LinkedList<>();
 
-        linkList.add(root);
-        while (!linkList.isEmpty()) {
-            //拿链表最后面的元素出来
-            TreeNode treeNode = linkList.pollLast();
-            if (treeNode != null) {
-                if (!firstNodePath.contains(p)) {
-                    firstNodePath.add(treeNode);
-                }
-                if (!secondNodePath.contains(q)) {
-                    secondNodePath.add(treeNode);
-                }
-
-                if (treeNode.right != null) {
-                    linkList.add(treeNode.right);
-                }
-                if (treeNode.left != null) {
-                    linkList.add(treeNode.left);
-                }
-            }
-        }
+        getPathToTarget(root, p, firstNodePath);
+        getPathToTarget(root, q, secondNodePath);
 
         TreeNode node = null;
         int n = Math.min(firstNodePath.size(), secondNodePath.size());
@@ -50,25 +32,29 @@ public class Offer68 {
         return node;
     }
 
-//    //前序遍历搜索节点p或q
-//    static void getPath(TreeNode root, TreeNode node, List<TreeNode> path) {
-//        if (root == null) {
-//            return;
-//        }
-//        path.add(root);
-//        if (root == node) {
-//            return;
-//        }
-//        if (path.get(path.size() - 1) != node) {
-//            getPath(root.left, node, path);
-//        }
-//        if (path.get(path.size() - 1) != node) {
-//            getPath(root.right, node, path);
-//        }
-//        if (path.get(path.size() - 1) != node) {
-//            path.remove(path.size() - 1);
-//        }
-//    }
+    /**
+     * 求二叉树根节点到指定节点的路径
+     */
+    static void getPathToTarget(TreeNode root, TreeNode node, List<TreeNode> path) {
+        if (root == null) {
+            return;
+        }
+        path.add(root);
+        if (root == node) {
+            return;
+        }
+        if (path.get(path.size() - 1) != node) {
+            getPathToTarget(root.left, node, path);
+        }
+        if (path.get(path.size() - 1) != node) {
+            getPathToTarget(root.right, node, path);
+        }
+
+        // 剪枝
+        if (path.get(path.size() - 1) != node) {
+            path.remove(path.size() - 1);
+        }
+    }
 
     public static void main(String[] args) {
         final TreeNode treeNode5 = new TreeNode(4);
