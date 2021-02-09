@@ -42,11 +42,11 @@ public class LevelOrder {
         queue.push(root);
 
         while (!queue.isEmpty()) {
-            //获取当前队列的长度，这个长度相当于 当前这一层的节点个数
+            // 获取当前队列的长度，这个长度相当于当前这一层的节点个数
             int levelNodes = queue.size();
 
             List<Integer> tmp = new ArrayList<>();
-            // 不断的遍历队列，将每一层的元素放进队列
+            // 遍历主要的作用是遍历每一层元素，让它们将下一层的元素放进队列
             for (int i = 0; i < levelNodes; ++i) {
                 TreeNode treeNode = queue.remove();
                 tmp.add(treeNode.val);
