@@ -9,7 +9,7 @@ import java.util.LinkedList;
  * @description
  * @date Create in 2020-10-13 22:51:39
  */
-public class Offer55 {
+public class Offer55_1 {
     public static int maxDepth(TreeNode root) {
         if (root == null) {
             return 0;
