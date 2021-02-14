@@ -8,7 +8,7 @@ package com.algorithm.linked;
 public class LeetCode24 {
     public static ListNode swapPairs(ListNode head) {
         if (head == null || head.next == null) {
-            return new ListNode();
+            return head;
         }
         //假设链表是 1->2->3->4
         //保存 节点 2
