@@ -1,4 +1,4 @@
-package com.algorithm;
+package com.algorithm.binarytree;
 
 import com.algorithm.binarytree.TreeNode;
 

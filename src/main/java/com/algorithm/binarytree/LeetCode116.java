@@ -1,5 +1,7 @@
-package com.algorithm;
+package com.algorithm.binarytree;
 
+
+import com.algorithm.Node;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
