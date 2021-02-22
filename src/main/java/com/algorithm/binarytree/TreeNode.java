@@ -1,5 +1,6 @@
 package com.algorithm.binarytree;
 
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.Accessors;
 
@@ -10,6 +11,7 @@ import lombok.experimental.Accessors;
  */
 @Accessors(chain = true)
 @Setter
+@NoArgsConstructor
 public class TreeNode {
     public int val;
     public TreeNode left;
