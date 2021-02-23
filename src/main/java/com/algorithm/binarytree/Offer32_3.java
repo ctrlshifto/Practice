@@ -25,10 +25,10 @@ public class Offer32_3 {
             for (int i = 0; i < levelSize; i++) {
                 TreeNode node = queue.remove();
                 if (level % 2 == 1) {
-                    levelList.add(node.val);
+                    levelList.offerLast(node.val);
                 }
                 if (level % 2 == 0) {
-                    levelList.push(node.val);
+                    levelList.offerFirst(node.val);
                 }
                 if (node.left != null) {
                     queue.add(node.left);
