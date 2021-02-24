@@ -51,7 +51,9 @@ public class Offer34 {
         pathList.offerLast(root.val);
         sum = sum - root.val;
         if (sum == 0 && root.left == null && root.right == null) {
-            returnList.add(new LinkedList(pathList));
+            // 防止对象引用
+            final LinkedList<Integer> linkedList = new LinkedList<>(pathList);
+            returnList.add(linkedList);
         }
         recur(root.left, sum);
         recur(root.right, sum);
