@@ -1,7 +1,5 @@
 package com.algorithm.binarytree;
 
-import com.algorithm.binarytree.TreeNode;
-
 import java.util.LinkedList;
 import java.util.List;
 
@@ -10,7 +8,7 @@ import java.util.List;
  * @description <p>https://leetcode-cn.com/classic/problems/er-cha-shu-de-zui-jin-gong-gong-zu-xian-lcof/description/</p>
  * @date Create in 2021/2/3 22:28
  */
-public class Offer68 {
+public class Offer68_2 {
     public static TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
         if (root == null) {
             return null;
